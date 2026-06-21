@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>跨性别信息库 · 即将上线</title>
+<meta name="description" content="一个聚合跨性别相关医疗、法律、生活信息的中文资料库，正在建设中。">
+<style>
+  :root {
+    --blue:   #55CDFC;
+    --pink:   #F7A8B8;
+    --white:  #FFFFFF;
+    --text:   #1C1C1E;
+    --muted:  #6E6E73;
+    --border: #E5E5EA;
+    --bg:     #F9F9FB;
+    --font: 'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 40px 24px;
+  }
+
+  /* 顶部旗帜装饰条 */
+  .flag-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    display: flex;
+  }
+  .flag-bar span {
+    flex: 1;
+  }
+  .flag-bar span:nth-child(1) { background: var(--blue); }
+  .flag-bar span:nth-child(2) { background: var(--pink); }
+  .flag-bar span:nth-child(3) { background: var(--white); border-top: 1px solid var(--border); }
+  .flag-bar span:nth-child(4) { background: var(--pink); }
+  .flag-bar span:nth-child(5) { background: var(--blue); }
+
+  /* 主容器 */
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 52px 48px;
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* 图标区 */
+  .icon-wrap {
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 28px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #E8F6FE 0%, #FDE8EE 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon-wrap svg {
+    width: 26px;
+    height: 26px;
+    color: #4A9EC4;
+  }
+
+  /* 标题 */
+  h1 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+
+  /* 说明文字 */
+  .desc {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 32px;
+  }
+  .desc strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* 进度区 */
+  .progress-wrap {
+    margin-bottom: 36px;
+    text-align: left;
+  }
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .progress-label span:last-child {
+    color: var(--text);
+    font-weight: 500;
+  }
+  .progress-track {
+    height: 5px;
+    background: var(--border);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    width: 20%;
+    border-radius: 99px;
+    background: linear-gradient(90deg, var(--blue) 0%, var(--pink) 100%);
+  }
+
+  /* 分隔线 */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin-bottom: 28px;
+  }
+
+  /* 按钮组 */
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  a.btn {
+    display: block;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: opacity .15s, transform .12s;
+    letter-spacing: 0.01em;
+  }
+  a.btn:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+  }
+  a.btn-primary {
+    background: var(--text);
+    color: var(--white);
+  }
+  a.btn-secondary {
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--border);
+  }
+  a.btn-secondary:hover {
+    color: var(--text);
+    border-color: #C0C0C8;
+  }
+
+  /* 页脚 */
+  footer {
+    margin-top: 28px;
+    font-size: 12px;
+    color: #AEAEB2;
+    text-align: center;
+  }
+
+  @media (max-width: 480px) {
+    .card {
+      padding: 36px 28px;
+    }
+    h1 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="flag-bar">
+  <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<main class="card">
+
+  <div class="icon-wrap">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+      <line x1="9" y1="9" x2="15" y2="9"/>
+      <line x1="9" y1="13" x2="13" y2="13"/>
+    </svg>
+  </div>
+
+  <h1>跨性别信息库</h1>
+
+  <p class="desc">
+    一个聚合<strong>跨性别相关医疗、法律、心理与生活</strong>信息的中文资料库，<br>
+    支持语义搜索，正在建设中。
+    <br><br>
+    预计在 <strong>一个月内</strong> 正式上线，感谢你的等待。
+  </p>
+
+  <div class="progress-wrap">
+    <div class="progress-label">
+      <span>建设进度</span>
+      <span>约 20%</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill"></div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <nav class="links">
+    <a class="btn btn-primary" href="https://minecraftxfj.top" target="_blank" rel="noopener">
+      访问我的个人主页
+    </a>
+    <a class="btn btn-secondary" href="https://minecraftxfj.top/donate" target="_blank" rel="noopener">
+      支持这个项目
+    </a>
+  </nav>
+
+</main>
+
+<footer>
+  &copy; 2025 MinecraftXFJ &nbsp;·&nbsp; 建设中
+</footer>
+
+</body>
+</html>
